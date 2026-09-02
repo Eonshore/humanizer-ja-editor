@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "source": {
+    "files": [],
+    "total_characters": 0,
+    "sample_warning": "サンプルが少ない場合は暫定プロファイルとして扱う"
+  },
+  "sentence_metrics": {
+    "count": 0,
+    "length_chars": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p10": 0.0,
+      "p90": 0.0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  "paragraph_metrics": {
+    "count": 0,
+    "sentences_per_paragraph": {
+      "mean": 0.0,
+      "median": 0.0
+    },
+    "single_sentence_paragraph_ratio": 0.0
+  },
+  "style_markers": {
+    "sentence_endings": {},
+    "connectives_per_1000_chars": {},
+    "first_person_per_1000_chars": {},
+    "second_person_per_1000_chars": {},
+    "punctuation_per_1000_chars": {},
+    "markdown": {
+      "headings": 0,
+      "list_items": 0,
+      "bold_spans": 0,
+      "code_blocks": 0
+    }
+  },
+  "qualitative_notes": {
+    "register": "",
+    "preferred_terms": [],
+    "deliberate_quirks": [],
+    "uncertainty_style": "",
+    "structure_notes": "",
+    "do_not_invent": [
+      "体験",
+      "感情",
+      "数字",
+      "出典",
+      "固有名詞"
+    ]
+  }
+}

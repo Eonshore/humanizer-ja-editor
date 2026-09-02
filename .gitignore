@@ -1,0 +1,25 @@
+# Local agent state and task records
+.codex/
+
+# Python caches and environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Generated distributions and temporary archives
+*.zip
+*.tar
+*.tar.gz
+build/
+dist/
+
+# Local configuration and editor noise
+.env
+.env.*
+!.env.example
+.DS_Store
+*~
