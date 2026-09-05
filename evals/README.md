@@ -61,6 +61,15 @@
 - 導入時だけでなく、必要に応じて運用、更新、撤退、再評価を扱う。
 - 推奨の強さ、証拠の確かさ、最終決定、購入・導入などの実行権限を分ける。
 
+### なんJスレッド風プロファイルの必須条件
+
+- 明示指定時だけ使い、通常編集やGitHub・Slack・Xのスレッドへ混入させない。
+- レス番号とアンカーを整合させ、話者間の返答と発言の長短を使う。語尾だけの変換や、定型ネタの機械的な連打を避ける。
+- 架空の話者、質問、相づち、レス番号を依頼された演出として評価する。これだけを非捏造違反としない。
+- 対象の数字、確度、主体、条件、コード、引用、出典を保持し、架空話者の体験や世評を根拠にしない。
+- タイトルでも断定を強めず、重要な限定を遠い末尾だけに追いやらない。
+- `annotation`、口調だけ、行数や範囲の維持など、より具体的な指示に従う。
+
 ## ケース形式
 
 各JSON行には次が含まれます。
@@ -77,6 +86,7 @@
 - `author_sample_note`: 必要なケースだけ作者サンプル条件
 - `explanation_profile`: 必要なケースだけ `beginner` などの説明プロファイル
 - `purpose_profile`: 必要なケースだけ `guided-tutorial` / `troubleshooting` / `comparison-selection` の目的プロファイル
+- `style_profile`: 明示指定のケースだけ `nanj-thread`。文体を使わない対照ケースには付けない
 
 `document` ケースの `input` には、依頼文と、根拠・事実資料、作者の声のサンプル、説明構造のサンプルを一つの再現可能な入力として含める。
 被験モデルには、サンプルの役割を明示してもよいが、期待される結論や禁止動作は見せない。
@@ -84,7 +94,7 @@
 ## 推奨する実行方法
 
 1. 被験モデルには `SKILL.md` と必要なreferencesだけを読ませる。`document` ケースでは `software-exposition.md` を含め、`explanation_profile` が `beginner` の場合は `beginner-explanation-profile.md` を、`purpose_profile` がある場合は対応する目的プロファイルを含める
-2. `input`、`scene`、`mode`、`scope`、`author_sample_note`、`explanation_profile`、`purpose_profile`だけを与える
+2. `input`、`scene`、`mode`、`scope`、`author_sample_note`、`explanation_profile`、`purpose_profile`、`style_profile`だけを与える。`style_profile` がある場合は対応する参照文書も読ませる
 3. `must_preserve`、`expected_actions`、`forbidden_actions`はjudgeだけが読む
 4. 出力を人間または別モデルで採点する
 5. 失敗を規則か評価ケースへ反映する
@@ -100,6 +110,7 @@ python scripts/protect_audit.py input.txt output.txt --strict
 ```
 
 この監査は数字やコードの差分を見つけますが、主体の入れ替わりや因果関係の変化は判定できません。
+なんJスレッド風では、レス番号・アンカーを本文の数量と区別します。監査用コピーで特定済みの構造行を除くことはできますが、本文やコードの数字を一括削除してはいけません。
 
 ## 追加すべきケース
 

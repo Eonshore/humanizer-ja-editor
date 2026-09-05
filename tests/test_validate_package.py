@@ -31,6 +31,7 @@ class PackageValidationTests(unittest.TestCase):
             (copied_root / "references" / "guided-tutorial-profile.md").unlink()
             (copied_root / "references" / "troubleshooting-profile.md").unlink()
             (copied_root / "references" / "comparison-selection-profile.md").unlink()
+            (copied_root / "references" / "nanj-thread-profile.md").unlink()
             (copied_root / "evals" / "benchmark.jsonl").write_text(
                 '{"id": "HJ-001"}\n{"id": "HJ-003"}\n',
                 encoding="utf-8",
@@ -42,6 +43,7 @@ class PackageValidationTests(unittest.TestCase):
         self.assertIn("Missing reference: references/guided-tutorial-profile.md", errors)
         self.assertIn("Missing reference: references/troubleshooting-profile.md", errors)
         self.assertIn("Missing reference: references/comparison-selection-profile.md", errors)
+        self.assertIn("Missing reference: references/nanj-thread-profile.md", errors)
         self.assertIn("Benchmark IDs must be unique and contiguous from HJ-001 through HJ-003", errors)
 
     def test_validator_rejects_invalid_or_missing_purpose_profiles(self) -> None:
@@ -87,6 +89,38 @@ class PackageValidationTests(unittest.TestCase):
             "Benchmark purpose_profile is invalid at evals/benchmark.jsonl:40: 'winner-ranking'",
             invalid_errors,
         )
+
+    def test_validator_checks_optional_style_profile_type_and_value(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            copied_root = Path(tmp) / "humanizer-ja-editor"
+            shutil.copytree(
+                ROOT,
+                copied_root,
+                ignore=shutil.ignore_patterns(".git", ".codex", "__pycache__", "*.pyc", "*.zip"),
+            )
+            benchmark_path = copied_root / "evals" / "benchmark.jsonl"
+            records = [json.loads(line) for line in benchmark_path.read_text(encoding="utf-8").splitlines() if line.strip()]
+            for record in records:
+                record.pop("style_profile", None)
+            for value, expected_error in (
+                (None, None),
+                ("nanj-thread", None),
+                ("nanj-thred", "Benchmark style_profile is invalid"),
+                (["nanj-thread"], "Benchmark style_profile must be a string"),
+            ):
+                with self.subTest(value=value):
+                    records[0].pop("style_profile", None)
+                    if value is not None:
+                        records[0]["style_profile"] = value
+                    benchmark_path.write_text(
+                        "\n".join(json.dumps(record, ensure_ascii=False) for record in records) + "\n",
+                        encoding="utf-8",
+                    )
+                    errors, _warnings = validate(copied_root)
+                    if expected_error is None:
+                        self.assertEqual(errors, [])
+                    else:
+                        self.assertTrue(any(error.startswith(expected_error) for error in errors), errors)
 
     def test_validator_rejects_missing_or_invalid_openai_yaml(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

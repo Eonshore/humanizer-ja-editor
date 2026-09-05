@@ -13,6 +13,7 @@ from pathlib import Path
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 LINK_RE = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
 BENCHMARK_ID_RE = re.compile(r"^HJ-(\d{3,})$")
+ALLOWED_STYLE_PROFILES = {"nanj-thread"}
 ALLOWED_PURPOSE_PROFILES = {
     "guided-tutorial",
     "troubleshooting",
@@ -174,6 +175,7 @@ def validate(root: Path) -> tuple[list[str], list[str]]:
         "guided-tutorial-profile.md",
         "troubleshooting-profile.md",
         "comparison-selection-profile.md",
+        "nanj-thread-profile.md",
         "rewrite-operations.md",
         "author-profile.md",
         "output-modes.md",
@@ -227,6 +229,19 @@ def validate(root: Path) -> tuple[list[str], list[str]]:
                 continue
             seen_benchmark_ids.add(numeric_id)
             benchmark_ids.append(numeric_id)
+
+            raw_style_profile = record.get("style_profile")
+            if raw_style_profile is not None:
+                if not isinstance(raw_style_profile, str):
+                    errors.append(
+                        "Benchmark style_profile must be a string at "
+                        f"{jsonl_path.relative_to(root)}:{lineno}"
+                    )
+                elif raw_style_profile not in ALLOWED_STYLE_PROFILES:
+                    errors.append(
+                        "Benchmark style_profile is invalid at "
+                        f"{jsonl_path.relative_to(root)}:{lineno}: {raw_style_profile!r}"
+                    )
 
             raw_purpose_profile = record.get("purpose_profile")
             if raw_purpose_profile is not None:
