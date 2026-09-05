@@ -166,6 +166,10 @@ def validate(root: Path) -> tuple[list[str], list[str]]:
 
     required_references = {
         "fidelity-contract.md",
+        "easy-japanese.md",
+        "conversation-continuity.md",
+        "technical-writing.md",
+        "manuscript-style.md",
         "scene-profiles.md",
         "japanese-patterns.md",
         "reader-flow.md",

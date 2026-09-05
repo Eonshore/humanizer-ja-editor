@@ -86,3 +86,14 @@ The profile independently restates broad patterns such as defining the decision 
 It does not copy domain-specific criteria, scoring ranges, weights, maturity levels, candidate rankings, procurement rules, medical recommendations, product facts, or institutional wording.
 
 All links in these three sections record design provenance. They are not runtime instructions, licenses for copied text, factual evidence for another subject, or proof that the resulting profile improves model output without separate evaluation.
+
+## Japanese writing integration
+
+v0.7.0 consolidates the `yasashii-nihongo-writer` and `japanese-tech-writing` guidance supplied during development. Overlapping guidance was rewritten into shared fidelity rules, independent reader conditions, conversation continuity, technical argumentation, and an optional manuscript style. These names identify earlier inputs to the design; the standalone skills and local compatibility entry are not distributed in this repository.
+
+The easy-Japanese source skill identified the Agency for Cultural Affairs and Immigration Services Agency guides as design references:
+
+- [やさしい日本語ガイドライン](https://www.bunka.go.jp/seisaku/kokugo_nihongo/kyoiku/pdf/92484001_01.pdf)
+- [話し言葉のポイント](https://www.bunka.go.jp/seisaku/kokugo_nihongo/kyoiku/pdf/93832501_01.pdf)
+
+Their administrative-information context is not a universal style requirement. The linked documents were not newly verified during this integration and are not copied or bundled. These provenance links do not supply facts for a user's target document.

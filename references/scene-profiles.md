@@ -4,6 +4,8 @@
 
 ## chat
 
+[会話の連続性](conversation-continuity.md)で、共有済みの前提と直前の発話の役割を確認する。
+
 対象:
 
 - 日常会話
@@ -73,6 +75,8 @@
 - 主体を省略して責任を曖昧にする
 
 ## technical-docs
+
+[技術文書の用語と論証](technical-writing.md)を使う。書式は既存規約と作者の形式を優先し、[原稿スタイル](manuscript-style.md)を一般の技術文書へ自動適用しない。
 
 対象:
 

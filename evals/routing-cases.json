@@ -1,0 +1,60 @@
+{
+  "cases": [
+    {
+      "id": "R-01",
+      "request": "この案内をやさしい日本語にして、期限と例外は残して。",
+      "should_apply": true,
+      "profiles": [
+        "accessible"
+      ]
+    },
+    {
+      "id": "R-02",
+      "request": "技術の専門家向けに、用語と論証を整えて。既存の書式は維持して。",
+      "should_apply": true,
+      "profiles": [
+        "technical-writing"
+      ]
+    },
+    {
+      "id": "R-03",
+      "request": "日本語は読めますが、この技術は初めてです。提供資料から説明を作って。",
+      "should_apply": true,
+      "profiles": [
+        "beginner-explanation"
+      ]
+    },
+    {
+      "id": "R-04",
+      "request": "共有済みの前提を繰り返さず、この返答を自然な会話に直して。",
+      "should_apply": true,
+      "profiles": [
+        "conversation-continuity"
+      ]
+    },
+    {
+      "id": "R-05",
+      "request": "この英文を語順を保って逐語訳して。",
+      "should_apply": false,
+      "profiles": []
+    },
+    {
+      "id": "R-06",
+      "request": "誤字だけを修正して、語調と文の構造は一切変えないで。",
+      "should_apply": false,
+      "profiles": []
+    },
+    {
+      "id": "R-07",
+      "request": "このスタックトレースから原因を診断して。文章の推敲は不要です。",
+      "should_apply": false,
+      "profiles": []
+    },
+    {
+      "id": "R-08",
+      "request": "やさしい日本語という制度について、出典の内容が正しいか確認するだけにして。",
+      "should_apply": false,
+      "profiles": []
+    }
+  ]
+}

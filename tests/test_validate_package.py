@@ -24,7 +24,7 @@ class PackageValidationTests(unittest.TestCase):
             shutil.copytree(
                 ROOT,
                 copied_root,
-                ignore=shutil.ignore_patterns("__pycache__", "*.pyc", "*.zip"),
+                ignore=shutil.ignore_patterns(".git", ".codex", "__pycache__", "*.pyc", "*.zip"),
             )
             (copied_root / "references" / "software-exposition.md").unlink()
             (copied_root / "references" / "beginner-explanation-profile.md").unlink()
@@ -50,7 +50,7 @@ class PackageValidationTests(unittest.TestCase):
             shutil.copytree(
                 ROOT,
                 copied_root,
-                ignore=shutil.ignore_patterns("__pycache__", "*.pyc", "*.zip"),
+                ignore=shutil.ignore_patterns(".git", ".codex", "__pycache__", "*.pyc", "*.zip"),
             )
             benchmark_path = copied_root / "evals" / "benchmark.jsonl"
             records = [
@@ -94,7 +94,7 @@ class PackageValidationTests(unittest.TestCase):
             shutil.copytree(
                 ROOT,
                 copied_root,
-                ignore=shutil.ignore_patterns("__pycache__", "*.pyc", "*.zip"),
+                ignore=shutil.ignore_patterns(".git", ".codex", "__pycache__", "*.pyc", "*.zip"),
             )
             openai_path = copied_root / "agents" / "openai.yaml"
             openai_path.unlink()

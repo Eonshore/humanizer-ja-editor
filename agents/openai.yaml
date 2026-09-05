@@ -1,4 +1,4 @@
 interface:
   display_name: "Humanizer JA Editor"
-  short_description: "事実と書き手の声を保ちながら、日本語を自然に編集します"
-  default_prompt: "$humanizer-ja-editor を使い、次の文章を事実と語調を変えずに自然な日本語へ編集してください。"
+  short_description: "意味と書き手の声を保ち、読者に合わせた自然な日本語と技術文書を作ります"
+  default_prompt: "$humanizer-ja-editor を使い、意味と書き手の声を保ちながら、読者に合う自然な日本語へ整えてください。"
